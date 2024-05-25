@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Practice Questions</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+        .accordion-button {
+            background-color: #096fdd;
+            color: white;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: green;
+        }
+        .accordion-body {
+            background-color: #ffffff;
+        }
+        .question-code {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mb-4">Python Practice Questions</h1>
+    
+    <div class="accordion" id="questionsAccordion"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script>
+    const questions = [
+        {
+            section: "Indentation",
+            questions: [
+                "Fix the indentation in the following code snippet:\n\ndef greet(name):\nprint(f\"Hello, {name}!\")\n return \"Greeting sent\"",
+                "Fix the indentation in the following code snippet:\n\ndef calculate_sum(a, b):\nsum = a + b\n return sum",
+                "Fix the indentation in the following code snippet:\n\nfor i in range(5):\nprint(i)\n if i == 2:\n break",
+                "Fix the indentation in the following code snippet:\n\nif True:\nprint(\"This is true\")\n else:\nprint(\"This is false\")",
+                "Fix the indentation in the following code snippet:\n\nwhile True:\nprint(\"Looping\")\n break"
+            ]
+        },
+        {
+            section: "Variables and Data Types",
+            questions: [
+                "What will be the output of the following code?\n\nx = 5\ny = 10\nprint(x + y)",
+                "What will be the output of the following code?\n\na = \"Hello\"\nb = \"World\"\nprint(a + \" \" + b)",
+                "What will be the output of the following code?\n\nx = 3.14\ny = int(x)\nprint(y)",
+                "What will be the output of the following code?\n\na = True\nb = False\nprint(a and b)",
+                "What will be the output of the following code?\n\nname = \"Alice\"\nage = 30\nprint(f\"{name} is {age} years old.\")"
+            ]
+        },
+        {
+            section: "If, Else, and Elif",
+            questions: [
+                "Write a function that takes an integer and returns whether the number is positive, negative, or zero.\n\ndef check_number(num):\n    # Your code here",
+                "Write a function that checks if a given number is even or odd.\n\ndef is_even_or_odd(num):\n    # Your code here",
+                "Write a function that takes a string and returns whether it is a palindrome.\n\ndef is_palindrome(s):\n    # Your code here",
+                "Write a function that checks if a given year is a leap year.\n\ndef is_leap_year(year):\n    # Your code here",
+                "Write a function that takes a temperature in Celsius and returns a string indicating whether it's cold, warm, or hot.\n\ndef check_temperature(celsius):\n    # Your code here"
+            ]
+        },
+        {
+            section: "For Loops",
+            questions: [
+                "Write a for loop that prints the numbers from 1 to 10.\n\n# Your code here",
+                "Write a for loop that prints the elements of a given list.\n\nmy_list = [1, 2, 3, 4, 5]\n# Your code here",
+                "Write a for loop that prints the characters in a given string.\n\nmy_string = \"Hello\"\n# Your code here",
+                "Write a for loop that prints the squares of numbers from 1 to 10.\n\n# Your code here",
+                "Write a for loop that prints the elements of a given list in reverse order.\n\nmy_list = [1, 2, 3, 4, 5]\n# Your code here"
+            ]
+        },
+        {
+            section: "While Loops",
+            questions: [
+                "Write a while loop that prints the numbers from 10 to 1.\n\n# Your code here",
+                "Write a while loop that prints the elements of a given list until it encounters a specific element.\n\nmy_list = [1, 2, 3, 4, 5]\nstop_element = 3\n# Your code here",
+                "Write a while loop that prints the numbers from 1 to 10, but skips the number 5.\n\n# Your code here",
+                "Write a while loop that calculates the sum of numbers from 1 to 100.\n\n# Your code here",
+                "Write a while loop that prints the Fibonacci sequence up to a given number of terms.\n\nn_terms = 10\n# Your code here"
+            ]
+        },
+        {
+            section: "Nested Loops",
+            questions: [
+                "Write a nested loop to print a 5x5 grid of asterisks (*).\n\n# Your code here",
+                "Write a nested loop to print a multiplication table (1-10).\n\n# Your code here",
+                "Write a nested loop to print the pattern:\n\n*\n**\n***\n****\n*****\n\n# Your code here",
+                "Write a nested loop to print the pattern:\n\n1\n22\n333\n4444\n55555\n\n# Your code here",
+                "Write a nested loop to print a 5x5 grid of numbers where each row contains the row number.\n\n# Your code here"
+            ]
+        },
+        {
+            section: "Functions",
+            questions: [
+                "Write a function that takes two numbers and returns their sum.\n\ndef add_numbers(a, b):\n    # Your code here",
+                "Write a function that takes a string and returns its reverse.\n\ndef reverse_string(s):\n    # Your code here",
+                "Write a function that takes a list of numbers and returns their average.\n\ndef average(numbers):\n    # Your code here",
+                "Write a function that takes a list of strings and returns the longest string.\n\ndef longest_string(strings):\n    # Your code here",
+                "Write a function that takes a number and returns True if it is prime, otherwise False.\n\ndef is_prime(n):\n    # Your code here"
+            ]
+        },
+        {
+            section: "Lists",
+            questions: [
+                "Write a function that takes a list of numbers and returns the maximum value.\n\ndef find_max(numbers):\n    # Your code here",
+                "Write a function that takes a list and returns a new list with only the unique elements.\n\ndef unique_elements(lst):\n    # Your code here",
+                "Write a function that takes a list of numbers and returns a new list with the numbers sorted in ascending order.\n\ndef sort_list(numbers):\n    # Your code here",
+                "Write a function that takes a list of strings and returns a list with the strings sorted by their length.\n\ndef sort_by_length(strings):\n    # Your code here",
+                "Write a function that takes a list and a value, and returns the index of the value in the list (or -1 if the value is not in the list).\n\ndef find_index(lst, value):\n    # Your code here"
+            ]
+        },
+        {
+            section: "Dictionaries",
+            questions: [
+                "Write a function that takes a dictionary and returns a list of its keys.\n\ndef get_keys(my_dict):\n    # Your code here",
+                "Write a function that takes a dictionary and returns a list of its values.\n\ndef get_values(my_dict):\n    # Your code here",
+                "Write a function that takes a dictionary and a key, and returns the corresponding value (or None if the key is not found).\n\ndef get_value(my_dict, key):\n    # Your code here",
+                "Write a function that takes two dictionaries and returns a new dictionary with all the key-value pairs from both.\n\ndef merge_dicts(dict1, dict2):\n    # Your code here",
+                "Write a function that takes a dictionary and returns a new dictionary with the keys and values swapped.\n\ndef swap_keys_values(my_dict):\n    # Your code here"
+            ]
+        },
+        {
+            section: "Match-Case (Python 3.10+)",
+            questions: [
+                "Write a function that uses match-case to check the type of a variable and prints whether it is an integer, float, string, or other.\n\ndef check_type(var):\n    # Your code here",
+                "Write a function that uses match-case to categorize an input as \"low\", \"medium\", or \"high\" based on its value.\n\ndef categorize_value(value):\n    # Your code here",
+                "Write a function that uses match-case to check if a string is \"yes\", \"no\", or \"maybe\".\n\ndef check_response(response):\n    # Your code here",
+                "Write a function that uses match-case to print the season based on the input month.\n\ndef print_season(month):\n    # Your code here",
+                "Write a function that uses match-case to handle different types of shapes (e.g., \"circle\", \"square\") and prints the number of sides (circle has 0 sides).\n\ndef shape_sides(shape):\n    # Your code here"
+            ]
+        },
+        {
+            section: "List Comprehensions",
+            questions: [
+                "Write a list comprehension that generates a list of squares of numbers from 1 to 10.\n\n# Your code here",
+                "Write a list comprehension that generates a list of even numbers from 1 to 20.\n\n# Your code here",
+                "Write a list comprehension that filters out the vowels from a given string.\n\ninput_string = \"Hello World\"\n# Your code here",
+                "Write a list comprehension that creates a list of the first letters of each word in a given sentence.\n\nsentence = \"Python is fun\"\n# Your code here",
+                "Write a list comprehension that generates a list of tuples where each tuple contains a number and its square (for numbers 1 to 10).\n\n# Your code here"
+            ]
+        },
+        {
+            section: "File Handling",
+            questions: [
+                "Write a function that reads a file and prints its content.\n\ndef read_file(file_path):\n    # Your code here",
+                "Write a function that writes a given string to a file.\n\ndef write_to_file(file_path, content):\n    # Your code here",
+                "Write a function that appends a given string to a file.\n\ndef append_to_file(file_path, content):\n    # Your code here",
+                "Write a function that reads a file and returns the number of lines in it.\n\ndef count_lines(file_path):\n    # Your code here",
+                "Write a function that reads a file and returns the longest line in it.\n\ndef longest_line(file_path):\n    # Your code here"
+            ]
+        },
+        {
+            section: "Error Handling",
+            questions: [
+                "Write a function that divides two numbers and handles division by zero.\n\ndef safe_divide(a, b):\n    # Your code here",
+                "Write a function that reads an integer from user input and handles invalid input.\n\ndef read_integer():\n    # Your code here",
+                "Write a function that opens a file and handles the case where the file does not exist.\n\ndef open_file(file_path):\n    # Your code here",
+                "Write a function that converts a string to an integer and handles ValueError.\n\ndef string_to_int(s):\n    # Your code here",
+                "Write a function that retrieves a value from a dictionary by key and handles the case where the key does not exist.\n\ndef get_dict_value(my_dict, key):\n    # Your code here"
+            ]
+        },
+        {
+            section: "Putting It All Together",
+            questions: [
+                "Write a program that simulates a simple calculator. It should take two numbers and an operator (+, -, *, /) as input and print the result.\n\ndef calculator(a, b, operator):\n    # Your code here\n\n# Example usage\nprint(calculator(5, 3, '+'))\nprint(calculator(5, 3, '-'))\nprint(calculator(5, 3, '*'))\nprint(calculator(5, 3, '/'))",
+                "Write a program that reads a file and counts the frequency of each word in it.\n\ndef word_count(file_path):\n    # Your code here",
+                "Write a program that takes a list of integers and prints the prime numbers.\n\ndef print_primes(numbers):\n    # Your code here",
+                "Write a program that takes a list of strings and prints only the strings that are palindromes.\n\ndef print_palindromes(strings):\n    # Your code here",
+                "Write a program that takes a list of integers and prints the list sorted in ascending order, without using the built-in `sort` method.\n\ndef sort_list(numbers):\n    # Your code here"
+            ]
+        }
+    ];
+
+    const container = document.getElementById("questionsAccordion");
+
+    questions.forEach((section, index) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const cardHeader = document.createElement('div');
+        cardHeader.classList.add('card-header');
+        cardHeader.id = `heading${index}`;
+
+        const h2 = document.createElement('h2');
+        h2.classList.add('mb-0');
+
+        const button = document.createElement('button');
+        button.classList.add('btn', 'btn-link', 'accordion-button');
+        button.type = 'button';
+        button.setAttribute('data-toggle', 'collapse');
+        button.setAttribute('data-target', `#collapse${index}`);
+        button.setAttribute('aria-expanded', 'true');
+        button.setAttribute('aria-controls', `collapse${index}`);
+        button.textContent = section.section;
+
+        h2.appendChild(button);
+        cardHeader.appendChild(h2);
+        card.appendChild(cardHeader);
+
+        const collapseDiv = document.createElement('div');
+        collapseDiv.id = `collapse${index}`;
+        collapseDiv.classList.add('collapse');
+        collapseDiv.setAttribute('aria-labelledby', `heading${index}`);
+        collapseDiv.setAttribute('data-parent', '#questionsAccordion');
+
+        const cardBody = document.createElement('div');
+        cardBody.classList.add('card-body');
+
+        section.questions.forEach(question => {
+            const pre = document.createElement('pre');
+            pre.classList.add('question-code');
+            const code = document.createElement('code');
+            code.classList.add('python');
+            code.textContent = question;
+            pre.appendChild(code);
+            cardBody.appendChild(pre);
+        });
+
+        collapseDiv.appendChild(cardBody);
+        card.appendChild(collapseDiv);
+        container.appendChild(card);
+    });
+
+    hljs.highlightAll();
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
